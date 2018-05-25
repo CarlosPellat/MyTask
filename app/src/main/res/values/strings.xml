@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Task</string>
+    <string name="feito">Feito?</string>
+    <string name="app_name">Minhas Tarefas</string>
 </resources>
