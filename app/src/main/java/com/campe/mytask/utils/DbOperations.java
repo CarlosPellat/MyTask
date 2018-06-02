@@ -9,6 +9,8 @@ import com.campe.mytask.daos.UserDao;
 import com.campe.mytask.models.Task;
 import com.campe.mytask.models.User;
 
+import java.util.List;
+
 /**
  * Created by campe on 21/04/18.
  */
@@ -23,6 +25,8 @@ public class DbOperations {
 
     public interface DBOperationsTaskCallBack {
         void taskSaved(Boolean success);
+
+        void getAllTasks(List<Task> listaTarefas);
 
     }
 
@@ -47,6 +51,11 @@ public class DbOperations {
         this.taskCallback = callback;
         new saveTaskTask().execute(task);
     }
+
+    public void getAllTasks(DBOperationsTaskCallBack callBack){
+        this.taskCallback = callBack;
+        new getAllTasksTask().execute();
+        }
 
     public void queryAuthenticatedUser(String user, String pass, DBOperationsCallBack callback){
         this.callback = callback;
@@ -110,4 +119,18 @@ public class DbOperations {
         }
     }
 
+    private class getAllTasksTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                List<Task> lista = AppDatabase.getInstance(context).taskDao().getAll();
+                if(taskCallback != null) {
+                    taskCallback.getAllTasks(lista);
+                }
+            } catch (Exception e) {
+                Log.e("queryUser", e.getMessage());
+            }
+            return null;
+        }
+    }
 }

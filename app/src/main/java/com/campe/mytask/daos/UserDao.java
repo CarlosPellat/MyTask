@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.campe.mytask.models.User;
 
@@ -25,5 +26,8 @@ public interface UserDao {
     void insertAll(User... users);
 
     @Delete
-    void delete(User user);
+    void delete(User... user);
+
+    @Update
+    void update(User... user);
 }

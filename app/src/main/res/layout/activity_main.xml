@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="48px"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/mytasks"
             app:srcCompat="@drawable/mytasks" />
 
         <TextView

@@ -16,12 +16,19 @@ public class User {
     @ColumnInfo(name = "username")
     private String username;
 
+    @ColumnInfo(name = "name")
+    private String nameuser;
+
     @ColumnInfo(name = "encrypted_password")
     private String encryptedPassword;
 
-    public User(String username, String encryptedPassword) {
+    public User(String username, String name, String encryptedPassword) {
         this.username = username;
+        this.nameuser = name;
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public User(){
     }
 
     public int getUid() {
@@ -38,6 +45,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getNameuser() {
+        return nameuser;
+    }
+
+    public void setNameuser(String nameuser) {
+        this.nameuser = nameuser;
     }
 
     public String getEncryptedPassword() {

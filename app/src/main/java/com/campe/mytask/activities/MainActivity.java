@@ -42,40 +42,38 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListaTarefasActivity.class);
         startActivity(intent);
 
+        EditText username = (EditText) findViewById(R.id.username);
+        EditText password = (EditText) findViewById(R.id.password);
 
+        String user =  username.getText().toString();
+        String pass =  password.getText().toString();
 
-//        EditText username = (EditText) findViewById(R.id.username);
-//        EditText password = (EditText) findViewById(R.id.password);
-//
-//        String user =  username.getText().toString();
-//        String pass =  password.getText().toString();
-//
-//        DbOperations dbOperations = new DbOperations(this);
-//        dbOperations.queryAuthenticatedUser(user, pass, new DbOperations.DBOperationsCallBack() {
-//            @Override
-//            public void userSaverd(Boolean success) {}
-//
-//            @Override
-//            public void userExists(final Boolean exists) {
-//                MainActivity.this.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if(exists) {
-//                            Toast.makeText(MainActivity.this, "Usuario logado!!!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(MainActivity.this, "Usuario não logado!!!", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//
-//            }
-//
+        DbOperations dbOperations = new DbOperations(this);
+        dbOperations.queryAuthenticatedUser(user, pass, new DbOperations.DBOperationsCallBack() {
+            @Override
+            public void userSaverd(Boolean success) {}
+
+            @Override
+            public void userExists(final Boolean exists) {
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(exists) {
+                            Toast.makeText(MainActivity.this, "Usuario logado!!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "Usuario não logado!!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            }
+
 //            @Override
 //            public void userUpdated(Boolean success) {}
 //
 //            @Override
 //            public void userDeleted(Boolean success) {}
-//        });
+        });
 
     }
 

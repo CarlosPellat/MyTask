@@ -22,21 +22,24 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_usuario);
     }
 
-    public void cadastrar(View view) {
-        EditText newUsername = (EditText) findViewById(R.id.username);
+    public void cadastrarusuario(View view) {
+        EditText newUsername = (EditText) findViewById(R.id.newusername);
         String username = newUsername.getText().toString();
 
-        EditText newPassword = (EditText) findViewById(R.id.password);
+        EditText newName = (EditText) findViewById(R.id.newname);
+        String nameuser = newName.getText().toString();
+
+        EditText newPassword = (EditText) findViewById(R.id.newpassword);
         String password = newPassword.getText().toString();
 
         DbOperations db = new DbOperations(this);
-        db.saveUser(new User(username, password), new DbOperations.DBOperationsCallBack() {
+        db.saveUser(new User(username, nameuser, password), new DbOperations.DBOperationsCallBack() {
             @Override
             public void userSaverd(Boolean success) {
                 CadastroUsuarioActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(CadastroUsuarioActivity.this, "Usuario salvo!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CadastroUsuarioActivity.this, "USUARIO SALVO!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

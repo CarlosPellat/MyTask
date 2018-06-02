@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.campe.mytask.R;
-import com.campe.mytask.models.Tarefa;
+
 import com.campe.mytask.models.Task;
 import com.campe.mytask.models.User;
 
@@ -19,20 +19,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 /**
  * Created by campe on 21/04/18.
  */
 
-public class TarefasAdapter extends ArrayAdapter<Tarefa> {
-    ArrayList<Tarefa> tarefas;
-    public TarefasAdapter(@NonNull Context context, int resource, @NonNull Tarefa[] objects) {
+public class TarefasAdapter extends ArrayAdapter<Task> {
+    ArrayList<Task> tarefas;
+    public TarefasAdapter(@NonNull Context context, int resource, @NonNull List<Task> objects) {
         super(context, resource);
-        tarefas = new ArrayList<>(Arrays.asList(objects));
+        tarefas = new ArrayList<>(objects.size());
+        tarefas.addAll(objects);
     }
 
     @Nullable
     @Override
-    public Tarefa getItem(int position) {
+    public Task getItem(int position) {
         return tarefas.get(position);
     }
 
@@ -42,7 +44,7 @@ public class TarefasAdapter extends ArrayAdapter<Tarefa> {
     }
 
     @Override
-    public void add(@Nullable Tarefa object) {
+    public void add(@Nullable Task object) {
         tarefas.add(object);
     }
 
@@ -55,11 +57,11 @@ public class TarefasAdapter extends ArrayAdapter<Tarefa> {
                 parent,
                 false);
 
-        Tarefa tarefa = getItem(position);
+        Task tarefa = getItem(position);
         TextView titulo = (TextView) itemTarefa.findViewById(R.id.titulo);
         titulo.setText(tarefa.getDescription());
         CheckBox status = (CheckBox) itemTarefa.findViewById(R.id.status);
-        status.setChecked(tarefa.getDone());
+//        status.setChecked(tarefa.getDone());
 
         return itemTarefa;
     }

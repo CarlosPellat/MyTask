@@ -14,7 +14,7 @@ import com.campe.mytask.models.User;
  * Created by campe on 21/04/18.
  */
 
-@Database(entities = {User.class, Task.class}, version = 1)
+@Database(entities = {User.class, Task.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String databaseName = "my_tasks_app";
 
